@@ -1,4 +1,4 @@
-puppet (2.7.8-rc1-nhnet1) hardy jaunty karmic lucid maverick natty oneiric unstable lenny sid squeeze wheezy; urgency=low
+puppet (2.7.8-rc1-nhnet1) lucid; urgency=low
 
   * Updated to version 2.7.8rc1
 

@@ -1,3 +1,9 @@
+puppet (2.7.8-rc1-nhnet2) lucid; urgency=low
+
+  * Changed libaugeas-ruby dependency version to 0.3.0
+
+ -- Olafur Osvaldsson <osvaldsson@nethonnun.is>  Mon, 01 Jan 2012 11:30:00 +0000
+
 puppet (2.7.8-rc1-nhnet1) lucid; urgency=low
 
   * Updated to version 2.7.8rc1

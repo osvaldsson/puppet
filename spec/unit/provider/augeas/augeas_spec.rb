@@ -321,10 +321,14 @@ describe provider_class do
       before(:each) do
         Puppet[:show_diff] = true
 
-        @resource[:root] = ""
-        @provider.stubs(:get_augeas_version).returns("0.7.2")
-        @augeas.stubs(:set).returns(true)
-        @augeas.stubs(:save).returns(true)
+        @resource = Puppet::Type.type(:augeas).new(:name => "test")
+        @provider = provider_class.new(@resource)
+        @augeas_stub = stub("augeas")
+        @provider.aug = @augeas_stub
+
+        @augeas_stub.stubs("get").with("/augeas/version").returns("0.10.0")
+        @augeas_stub.stubs(:set).returns(true)
+        @augeas_stub.stubs(:save).returns(true)
       end
 
       it "should call diff when a file is shown to have been changed" do
@@ -431,11 +435,9 @@ describe provider_class do
   describe "augeas execution integration" do
     before do
       @augeas = stub("augeas")
-      @augeas.stubs("close")
-      @augeas.stubs(:match).with("/augeas/events/saved")
-
-      @provider.aug = @augeas
+      @provider.aug= @augeas
       @provider.stubs(:get_augeas_version).returns("0.3.5")
+      @augeas.stubs(:match).with("/augeas/events/saved").returns([])
     end
 
     it "should handle set commands" do

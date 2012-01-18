@@ -5,7 +5,7 @@ Puppet::Type.type(:service).provide :upstart, :parent => :init do
   on Ubuntu. For `upstart` documentation, see <http://upstart.ubuntu.com/>.
   "
   # confine to :ubuntu for now because I haven't tested on other platforms
-  confine :operatingsystem => :ubuntu #[:ubuntu, :fedora, :debian]
+  confine :operatingsystem => [:ubuntu, :fedora, :debian, :redhat, :centos]
 
   commands :start   => "/sbin/start",
            :stop    => "/sbin/stop",
